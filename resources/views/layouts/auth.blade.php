@@ -12,9 +12,11 @@
 </head>
 <body>
 
+<div class="container">
     @yield('content')
+</div>
 
-    @include('includes.script')
-    @stack('addon-script')
+@include('includes.script')
+@stack('addon-script')
 </body>
 </html>

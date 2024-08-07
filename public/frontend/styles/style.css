@@ -612,6 +612,19 @@
 
 .container-content {
     padding-top: 120px;
+    padding-bottom: 20px;
+}
+
+.content-field {
+    min-height: 38vw;
+}
+
+.profile-field {
+    min-height: 47vw;
+}
+
+.active-navbar-menu {
+    color: #508C9B !important;
 }
 
 .fixed-top {

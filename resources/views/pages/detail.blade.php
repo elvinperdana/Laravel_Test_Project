@@ -5,21 +5,102 @@
 @endsection
 
 @section('content')
-    <div class="container-content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, nam odit! Cum dolorem dolores error esse fugiat
-        laboriosam. Accusamus adipisci amet cumque dolor doloremque et eum expedita impedit, ipsam laudantium, neque
-        nesciunt non omnis, pariatur possimus saepe similique tempore temporibus ullam veniam? Cupiditate eveniet fugiat
-        inventore laborum neque nesciunt nihil rem soluta! Aliquid autem cumque cupiditate doloremque eius, eveniet,
-        exercitationem, fugiat incidunt ipsum maiores molestias mollitia natus neque nihil optio pariatur perspiciatis
-        porro quibusdam? Beatae cum debitis distinctio dolorem earum eligendi enim facilis inventore iure laborum minus
-        modi pariatur perspiciatis quas, quasi, quis ratione repellendus rerum saepe ut vero voluptas?
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            <div class="fw-bold" style="font-size: 26px">
+                Title
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="fa-solid fa-user me-2" style="font-size: 14px"></i>
+                <div style="font-size: 14px">
+                    By Person
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex align-items-center text-secondary">
+            <div>
+                date
+            </div>
+            <i class="fa-solid fa-clock ms-2"></i>
+        </div>
+    </div>
+
+
+
+    <div class="mt-4">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dignissimos dolorum maxime sint. Adipisci
+        aliquam cupiditate dolor ex incidunt nesciunt nulla rerum totam, voluptas! Aperiam cum ea eos nemo pariatur.
+        Aliquid, architecto aspernatur dolores ducimus eaque eius esse eum exercitationem, expedita harum illo in minus
+        mollitia natus numquam officia pariatur perspiciatis ratione, recusandae reprehenderit sed similique sunt
+        tenetur vel vitae voluptates voluptatibus. Consectetur consequuntur debitis dignissimos dolore doloremque ea
+        harum inventore labore natus quae! Accusamus aperiam aspernatur assumenda deleniti deserunt doloribus eaque eos
+        expedita fuga ipsa odio, omnis possimus, quia temporibus velit? Aliquid consectetur iusto, laudantium quibusdam
+        repellat suscipit velit!
+    </div>
+
+    <hr class="my-4">
+
+    <div class="card p-3 mb-2">
+        <div class="container-comment">
+            <div class="child-container-comment-1">
+                <div class="fw-bold">
+                    { Name }
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="fa-solid fa-clock me-1 text-secondary" style="font-size: 12px"></i>
+                    <div style="font-size: 12px" class="text-secondary">
+                        { Date }
+                    </div>
+                </div>
+                <div style="font-size: 14px">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quos!
+                </div>
+                <a style="font-size: 14px" class="link-primary text-decoration-none" href="">
+                    reply
+                </a>
+            </div>
+            <div class="child-container-comment-2 ms-5">
+                <div class="child-container-comment-3">
+                    <div class="fw-bold">
+                        { Name }
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-clock me-1 text-secondary" style="font-size: 12px"></i>
+                        <div style="font-size: 12px" class="text-secondary">
+                            { Date }
+                        </div>
+                    </div>
+                    <div style="font-size: 14px">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quos!
+                    </div>
+                    <a style="font-size: 14px" class="link-primary text-decoration-none" href="">
+                        reply
+                    </a>
+                </div>
+                <div class="child-container-comment-4 ms-5">
+                    <div class="fw-bold">
+                        { Name }
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-clock me-1 text-secondary" style="font-size: 12px"></i>
+                        <div style="font-size: 12px" class="text-secondary">
+                            { Date }
+                        </div>
+                    </div>
+                    <div style="font-size: 14px">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quos!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 @endsection
 
 @push('addon-style')
-    <style>
 
-    </style>
 @endpush
 
 @push('addon-script')

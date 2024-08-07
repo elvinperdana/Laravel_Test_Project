@@ -1,10 +1,14 @@
-@extends('layouts.dashboard')
+@extends('layouts.activity')
 
 @section('title')
-    Dashboard
+    Activity
 @endsection
 
 @section('content')
+    <div class="d-grid mb-4">
+        <a class="btn btn-primary" type="button" href="{{ route('view-create-post-activity') }}" style="">Create New Post</a>
+    </div>
+
     <div class="container border rounded p-3">
         <div class="d-flex mb-3 ">
             <div class="flex-grow-1">

@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class userController extends Controller
+class AuthController extends Controller
 {
+    public function loginView(Request $request)
+    {
+        return view('pages.auth');
+    }
     /**
      * Display a listing of the resource.
      */

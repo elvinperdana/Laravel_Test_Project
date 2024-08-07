@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', event => {
     // Navbar shrink function
     var navbarShrink = function () {
         const navbarCollapsible = document.body.querySelector('#navbar-navigation');
-        const containerContent = document.body.querySelector('.container-content');
         if (!navbarCollapsible) {
             return;
         }
