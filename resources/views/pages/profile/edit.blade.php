@@ -5,131 +5,207 @@
 @endsection
 
 @section('content')
-    <div class="text-uppercase fw-bold" style="font-size: 26px">
-        Edit Profile
+    <div>
+        <a class="btn btn-dark" href="{{ route('profile') }}">
+            Back to Profile
+        </a>
     </div>
-    <div class="container mt-5" style="font-size: 18px">
-        <form action="" method="POST">
-            @csrf
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName">
-                </div>
+    <div class="row mt-3">
+        <div class="col-md-6 pb-4">
+            <div class="text-uppercase fw-bold" style="font-size: 26px">
+                Edit Profile
             </div>
+            <div class="container mt-3" style="font-size: 18px">
+                <form action="{{ route('update-profile') }}" method="POST">
+                    @csrf
+                    @method('patch')
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required
+                               value="{{  $user->name }}">
+                        @if ($errors->has('name'))
+                            <div class="text-danger text-decoration-underline" id="error-message-update-name-profile">
+                                {{ $errors->first('name') }}
+                            </div>
 
-            <div class="mb-3">
-                <label for="birthDate" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="birthDate" name="birthDate" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="mobile" class="form-label">Mobile</label>
-                <input type="tel" class="form-control" id="mobile" name="mobile">
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
-            </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-update-name-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required
+                               value="{{ $user->email }}">
+                        @if ($errors->has('email'))
+                            <div class="text-danger text-decoration-underline" id="error-message-update-email-profile">
+                                {{ $errors->first('email') }}
+                            </div>
 
-            <div class="text-end mt-4">
-                <button type="submit" class="btn btn-outline-dark">Submit</button>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-update-email-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div class="align-content-center">
+                            @if (session('status') === 'profile-updated')
+                                <div class="mb-0 alert alert-success alert-dismissible fade show py-1" role="alert"
+                                     id="statusMessage" style="font-size: 14px">
+                                    Data Saved
+                                </div>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var statusMessage = document.getElementById('statusMessage');
+                                        if (statusMessage) {
+                                            setTimeout(function () {
+                                                statusMessage.style.display = 'none';
+                                            }, 2000);
+                                        }
+                                    });
+
+                                    alert('Profile\'s Data has been Updated')
+                                </script>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
+        <div class="col-md-6">
+            <div class="text-uppercase fw-bold" style="font-size: 26px">
+                Update Password
+            </div>
+            <div class="container mt-3" style="font-size: 18px">
+                <form action="{{ route('password.update') }}" method="POST">
+                    @csrf
+                    @method('put')
+
+                    <div class="mb-3">
+                        <label for="update_password_current_password" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="update_password_current_password"
+                               name="current_password" required>
+                        @if ($errors->has('email'))
+                            <div class="text-danger text-decoration-underline" id="error-message-update-email-profile">
+                                {{ $errors->first('email') }}
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-update-email-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                        @if ($errors->updatePassword->has('current_password'))
+                            <div class="text-danger text-decoration-underline" id="error-message-current-password-profile">
+                                {{ $errors->updatePassword->first('current_password') }}
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-current-password-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="update_password_password" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="update_password_password" name="password" required>
+                        @if ($errors->updatePassword->has('password'))
+                            <div class="text-danger text-decoration-underline" id="error-message-password-profile">
+                                {{ $errors->updatePassword->first('password') }}
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-password-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="update_password_password_confirmation" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="update_password_password_confirmation" name="password_confirmation" required>
+                        @if ($errors->updatePassword->has('password_confirmation'))
+                            <div class="text-danger text-decoration-underline" id="error-message-confirmation-password-profile">
+                                {{ $errors->updatePassword->first('password_confirmation') }}
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var statusMessage = document.getElementById('error-message-confirmation-password-profile');
+                                    if (statusMessage) {
+                                        setTimeout(function () {
+                                            statusMessage.style.display = 'none';
+                                        }, 5000);
+                                    }
+                                });
+                            </script>
+                        @endif
+                    </div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div class="align-content-center">
+                            @if (session('status') === 'password-updated')
+                                <div class="mb-0 alert alert-success alert-dismissible fade show py-1" role="alert"
+                                     id="statusMessagePassword" style="font-size: 14px">
+                                    Password Updated
+                                </div>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        var statusMessage = document.getElementById('statusMessagePassword');
+                                        if (statusMessage) {
+                                            setTimeout(function () {
+                                                statusMessage.style.display = 'none';
+                                            }, 2000);
+                                        }
+                                    });
+
+                                    alert('Password has been Updated')
+                                </script>
+                            @endif
+                        </div>
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
 
 @push('addon-script')
-    <script>
-        function validate(val) {
-            v1 = document.getElementById("fname");
-            v2 = document.getElementById("lname");
-            v3 = document.getElementById("email");
-            v4 = document.getElementById("mob");
-            v5 = document.getElementById("job");
-            v6 = document.getElementById("ans");
 
-            flag1 = true;
-            flag2 = true;
-            flag3 = true;
-            flag4 = true;
-            flag5 = true;
-            flag6 = true;
-
-            if(val>=1 || val==0) {
-                if(v1.value == "") {
-                    v1.style.borderColor = "red";
-                    flag1 = false;
-                }
-                else {
-                    v1.style.borderColor = "green";
-                    flag1 = true;
-                }
-            }
-
-            if(val>=2 || val==0) {
-                if(v2.value == "") {
-                    v2.style.borderColor = "red";
-                    flag2 = false;
-                }
-                else {
-                    v2.style.borderColor = "green";
-                    flag2 = true;
-                }
-            }
-            if(val>=3 || val==0) {
-                if(v3.value == "") {
-                    v3.style.borderColor = "red";
-                    flag3 = false;
-                }
-                else {
-                    v3.style.borderColor = "green";
-                    flag3 = true;
-                }
-            }
-            if(val>=4 || val==0) {
-                if(v4.value == "") {
-                    v4.style.borderColor = "red";
-                    flag4 = false;
-                }
-                else {
-                    v4.style.borderColor = "green";
-                    flag4 = true;
-                }
-            }
-            if(val>=5 || val==0) {
-                if(v5.value == "") {
-                    v5.style.borderColor = "red";
-                    flag5 = false;
-                }
-                else {
-                    v5.style.borderColor = "green";
-                    flag5 = true;
-                }
-            }
-            if(val>=6 || val==0) {
-                if(v6.value == "") {
-                    v6.style.borderColor = "red";
-                    flag6 = false;
-                }
-                else {
-                    v6.style.borderColor = "green";
-                    flag6 = true;
-                }
-            }
-
-            flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
-
-            return flag;
-        }
-    </script>
 @endpush
 
 

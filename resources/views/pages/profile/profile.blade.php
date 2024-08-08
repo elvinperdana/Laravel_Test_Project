@@ -14,7 +14,7 @@
                 <p class="mb-0">Full Name</p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
+                <p class="text-muted mb-0">{{ $user->name }}</p>
             </div>
         </div>
         <hr>
@@ -23,45 +23,31 @@
                 <p class="mb-0">Email</p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
+                <p class="text-muted mb-0">{{ $user->email }}</p>
             </div>
         </div>
         <hr>
         <div class="row">
             <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
+                <p class="mb-0">Member Since</p>
             </div>
             <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-3">
-                <p class="mb-0">Mobile</p>
-            </div>
-            <div class="col-sm-9">
-                <p class="text-muted mb-0">(098) 765-4321</p>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-            </div>
-            <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                <p class="text-muted mb-0">{{ date_format($user->created_at, 'M d, Y') }}</p>
             </div>
         </div>
         <hr>
     </div>
     <div class="text-end mt-4">
-        <button type="button" class="btn btn-outline-dark" onclick="redirectToEditProfile()">Edit</button>
+        <button type="button" class="btn btn-dark" onclick="redirectToEditProfile()">Edit</button>
     </div>
 
-    <div class="text-center d-grid mt-5">
-        <button type="button" class="btn btn-outline-dark" onclick="logout()">LOGOUT</button>
-    </div>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <div class="text-center d-grid mt-5">
+            <a class="btn btn-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();">LOGOUT</a>
+        </div>
+    </form>
 @endsection
 
 @push('addon-script')

@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('post_id');
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('post_id')->constrained(table: 'posts', indexName: 'comment_post_id');
+            $table->foreignId('user_id')->constrained(table: 'users', indexName: 'comment_user_id');
+            $table->foreignId('parent_id')->nullable()->constrained(table: 'comments', indexName: 'comments_parent_id');
             $table->text('comment');
-            $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
-
-            // Foreign key constraints
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('parent_id')->references('id')->on('comments')->onDelete('cascade');
         });
     }
 

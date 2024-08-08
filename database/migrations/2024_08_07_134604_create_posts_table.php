@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('content');
-            $table->unsignedBigInteger('author');
+            $table->foreignId('user_id')->constrained(table: 'users', indexName: 'posts_user_id');
             $table->timestamps();
 
-            $table->foreign('author')->references('id')->on('users')->onDelete('cascade');
+//            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 

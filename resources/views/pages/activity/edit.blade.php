@@ -1,21 +1,27 @@
 @extends('layouts.activity')
 
 @section('title')
-    Create Post
+    Edit Post
 @endsection
 
 @section('content')
-    <form action="{{ route('create-post-activity') }}" method="POST">
+    <div class="mb-3">
+        <a class="btn btn-dark" href="{{ route('activity') }}">
+            Back to Activity
+        </a>
+    </div>
+    <form action="{{ route('edit-post-activity', $post->id) }}" method="POST">
         @csrf
+        @method('PUT')
         <div class="container border rounded p-3">
             <div class="mb-3">
                 <label for="titlePost" class="form-label">Title</label>
-                <input type="text" class="form-control" id="titlePost" name="title" required>
+                <input type="text" class="form-control" id="titlePost" name="title" required value="{{ $post->title }}">
             </div>
 
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="5">{{ $post->content }}</textarea>
             </div>
 
             <div class="d-grid">
