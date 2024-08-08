@@ -19,7 +19,7 @@
             <div class="d-flex align-items-center">
                 <i class="fa-solid fa-user me-2" style="font-size: 14px"></i>
                 <div style="font-size: 14px">
-                    {{ $post->author }}
+                    {{ $post->user_id }}
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                 <a class="btn btn-dark" type="button" id="button-comment-detail-dashboard" onclick="showCommentBox()">Comment</a>
             </div>
             <div id="container-form-comment-dashboard" class="d-none">
-                <form action="{{ route('view-edit-post-activity', $post->id) }}" method="POST">
+                <form action="{{ route('comment-detail-dashboard', $post->id) }}" method="POST">
                     @csrf
                     @method('POST')
                     <textarea class="form-control" rows="3" name="comment" placeholder="Write your comment here..."></textarea>

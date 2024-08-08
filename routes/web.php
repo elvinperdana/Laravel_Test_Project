@@ -12,6 +12,7 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('loginView');
 Route::get('/register', [AuthController::class, 'registerView'])->name('registerView');
 
 Route::middleware('auth')->group(function () {
+    Route::post('dashboard-comment/{id}', [DashboardController::class, 'createComment'])->name('comment-detail-dashboard');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::prefix('profile')
         ->namespace('profile')

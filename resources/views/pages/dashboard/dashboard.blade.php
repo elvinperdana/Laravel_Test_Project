@@ -18,7 +18,7 @@
                             {{ $post->title }}
                         </a>
                         <div class="text-secondary" style="font-size: 12px">
-                            {{ $post->author_name }}
+                            {{ $post->user_id_name }}
                         </div>
                     </div>
                     <div class="d-flex flex-column align-items-end text-secondary">
