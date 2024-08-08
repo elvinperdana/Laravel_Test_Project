@@ -41,7 +41,7 @@ class DashboardController extends Controller
     {
         $commentData = $request->all();
 
-        Post::create([
+        Comment::create([
             'post_id' => $id,
             'comment' => $commentData['comment'],
             'user_id' => Auth::id(),
